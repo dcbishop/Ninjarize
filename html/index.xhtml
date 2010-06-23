@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+		<title>Ninjarize</title>
+
+		<style type="text/css">
+			body {
+				color: white;
+				text-shadow: 0px 0px 3px #000000;
+				background-color: rgba(255,255,255,0.0);
+				opacity: 0;
+				-webkit-transition-property: opacity;
+				-webkit-transition-duration: 3s;
+			}
+			body.fadeIn {
+				opacity: 1.0;
+			}
+
+			header {
+				background-color: rgba(255,255,255,0.50);
+				color: #ffffff;
+				text-shadow: 0px 0px 3px #000000, 0px 0px 4px #000000;
+				font-size: 150%;
+				-webkit-border-top-left-radius: 20px;
+				-webkit-border-top-right-radius: 20px; 
+				text-align:center;
+			}
+
+			footer {
+				float: bottom;
+				position: absolute;
+				bottom: 10px;
+				background-color: rgba(255, 255, 255, 0.25);
+				padding: 5px;
+			}
+
+			h1 { 
+				text-shadow: 0px 0px 6px black;
+				background-color: rgba(255, 255, 255, 0.35);
+				margin: 0 0 0 0;
+				padding-left: 5px;
+				color: white;
+				font-size: 125%;
+			}
+
+			article {
+				float: left;
+				padding: 5px;
+				background-color: rgba(0, 0, 0, 0.5);
+				max-width: 50%;
+			}
+
+			aside {
+				float: right;
+				width: 5%;
+				max-height: 1000px;
+				background-color: rgba(255, 255, 255, 0.25);
+				-webkit-transition-property: width;
+				-webkit-transition-duration: 3s;
+			}
+
+			aside.slideIn {
+				width: 15%;
+			}
+
+			p {
+				font-size: 100%;
+			}
+
+			.transparent { background-color: rgba(128, 128, 128, 0.0); }
+			.tint-white-25 { background-color: rgba(255, 255, 255, 0.25); }
+			.tint-white-50 { background-color: rgba(255, 255, 255, 0.5); }
+			.tint-white-75 { background-color: rgba(255, 255, 255, 0.75); }
+			.tint-black-25 { background-color: rgba(0, 0, 0, 0.25); }
+			.tint-black-50 { background-color: rgba(0, 0, 0, 0.5); }
+			.tint-black-75 { background-color: rgba(0, 0, 0, 0.75); }
+			.tint-red-50 { background-color: rgba(128, 0, 0, 0.5); color: black;}
+			.tint-green-50 { background-color: rgba(0, 128, 0, 0.5); color: black;}
+			.tint-blue-50 { background-color: rgba(0, 0, 128, 0.5); color: black;}
+		</style>
+
+		<script>
+
+			function initilize() {
+				document.body.className="fadeIn";
+				var aside = document.getElementById('aside');
+				aside.className="slideIn";
+				clockTick();
+			}
+
+			function clockTick() {
+				var clock_time = document.getElementById('clock-time');
+				var clock_date = document.getElementById('clock-date');
+				var d = new Date();
+				clock_time.textContent = d.toTimeString();
+				clock_date.textContent = d.toDateString();
+				setTimeout('clockTick()', 500);
+			}
+		</script>
+	</head>
+
+
+	<body onload="initilize()">
+		<header>Ninjarize</header>
+
+		<article>
+			<section>
+				Welcome to Ninjarize.<br/><br/>
+
+				You should specify the URI you wish to open on the command line.<br/><br/>
+				<code>
+					Usage: ./ninjarize [OPTION...] [URI]<br/>
+					Renders a URI using webkit on the desktop (allowing transparency)<br/>
+					<br/>
+					  -w,--width=WIDTH                Set the window width.<br/>
+					  -h,--height=HEIGHT              Set the window height.<br/>
+					  -x                              Set the window's X coordinate.<br/>
+					  -y                              Set the window's Y coordinate.<br/>
+					  -b, --borders                   Enable window decoration.<br/>
+					  -s, --sticky                    Make window appear on all desktops.<br/>
+					  -d, --desktop                   Pin window to the desktop.<br/>
+					  -c, --center                    Center the window (overrides -x and -y).<br/>
+					  -n, --noinput                   Makes window clickthrowable.<br/>
+					  -f, --fullscreen                Fullscreens the window.  -v, --version                   Print program version.<br/>
+					<br/>
+					Notes:<br/>
+					If you don't specify size, coordinates of center the default is to maximize the window.<br/>
+					'Maximize' mode is differnt from 'fullscreen', maximize doesn't draw in the taskbar area like fullscreen does so if content is hiddent under the top taskbar turn off fullscreen. (there is no arg to force maximize, just don't override it.)<br/>
+					If you don't give any args then Ninjarize will enter a demo mode and --desktop, --noinput and --sticky will be turned on and a default uri 'file://html/index.xhtml' will be loaded.<br/>
+				</code>
+			</section>
+		<!--Draw some embedded SVG circles.-->
+		<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+			style="width:100%; height:300px; top:0; left:0; z-index:-1;">
+			<circle cx="50%" cy="50%" r="90" stroke="white" fill="white" fill-opacity="0.25"/>
+			<circle cx="50%" cy="50%" r="65" stroke="white" fill="white" fill-opacity="0.25"/>
+			<circle cx="50%" cy="50%" r="40" stroke="white" fill="white" fill-opacity="0.25"/>
+			<circle cx="50%" cy="50%" r="15" stroke="white" fill="white" fill-opacity="0.25"/>
+		</svg>
+		</article>
+
+		<aside id="aside" class="tint-white-50">
+			<h1>Sidebar</h1>
+			<section style="padding-left: 5px">
+				<time id="clock-time">?:?? ?.M.</time><br/>
+				<time id="clock-date">????? ????</time><br/>
+				<img src="hdd.svg" style="float: right; margin: 5px;" width="75" blur="5" />
+				Example fake temperature data.<br/>
+				CPU Temp: 99°c<br/>
+				GPU Temp: 99°c<br/>
+				HDD Temp: 99°c<br/>
+			</section>
+		</aside>
+		<footer>
+			Some footer text!
+		</footer>
+	</body>
+
+</html>
