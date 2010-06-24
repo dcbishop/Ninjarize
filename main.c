@@ -246,6 +246,6 @@ void print_help(char* execname) {
    printf("\n");
    printf("Notes:\n");
    printf("If you don't specify size, coordinates of center the default is to maximize the window.\n");
-   printf("'Maximize' mode is differnt from 'fullscreen', maximize doesn't draw in the taskbar area like fullscreen does so if content is hiddent under the top taskbar turn off fullscreen. (there is no arg to force maximize, just don't override it.)\n");
+   printf("'Maximize' mode is differnt from 'fullscreen', maximize doesn't draw in the taskbar area like fullscreen does so if content is hidden under the top taskbar turn off fullscreen. (there is no arg to force maximize, just don't override it.)\n");
    printf("If you don't give any args then Ninjarize will enter a demo mode and --desktop, --noinput and --sticky will be turned on and a default uri 'file://html/index.xhtml' will be loaded.\n");
 }

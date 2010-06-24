@@ -14,6 +14,7 @@
 				-webkit-transition-property: opacity;
 				-webkit-transition-duration: 3s;
 			}
+
 			body.fadeIn {
 				opacity: 1.0;
 			}
@@ -23,8 +24,8 @@
 				color: #ffffff;
 				text-shadow: 0px 0px 3px #000000, 0px 0px 4px #000000;
 				font-size: 150%;
-				-webkit-border-top-left-radius: 20px;
-				-webkit-border-top-right-radius: 20px; 
+				border-top-left-radius: 20px;
+				border-top-right-radius: 20px; 
 				text-align:center;
 			}
 
@@ -49,7 +50,7 @@
 				float: left;
 				padding: 5px;
 				background-color: rgba(0, 0, 0, 0.5);
-				max-width: 50%;
+				max-width: 60%;
 			}
 
 			aside {
@@ -82,7 +83,6 @@
 		</style>
 
 		<script>
-
 			function initilize() {
 				document.body.className="fadeIn";
 				var aside = document.getElementById('aside');
@@ -109,36 +109,44 @@
 			<section>
 				Welcome to Ninjarize.<br/><br/>
 
-				You should specify the URI you wish to open on the command line.<br/><br/>
-				<code>
-					Usage: ./ninjarize [OPTION...] [URI]<br/>
-					Renders a URI using webkit on the desktop (allowing transparency)<br/>
-					<br/>
-					  -w,--width=WIDTH                Set the window width.<br/>
-					  -h,--height=HEIGHT              Set the window height.<br/>
-					  -x                              Set the window's X coordinate.<br/>
-					  -y                              Set the window's Y coordinate.<br/>
-					  -b, --borders                   Enable window decoration.<br/>
-					  -s, --sticky                    Make window appear on all desktops.<br/>
-					  -d, --desktop                   Pin window to the desktop.<br/>
-					  -c, --center                    Center the window (overrides -x and -y).<br/>
-					  -n, --noinput                   Makes window clickthrowable.<br/>
-					  -f, --fullscreen                Fullscreens the window.  -v, --version                   Print program version.<br/>
-					<br/>
-					Notes:<br/>
-					If you don't specify size, coordinates of center the default is to maximize the window.<br/>
-					'Maximize' mode is differnt from 'fullscreen', maximize doesn't draw in the taskbar area like fullscreen does so if content is hiddent under the top taskbar turn off fullscreen. (there is no arg to force maximize, just don't override it.)<br/>
-					If you don't give any args then Ninjarize will enter a demo mode and --desktop, --noinput and --sticky will be turned on and a default uri 'file://html/index.xhtml' will be loaded.<br/>
-				</code>
+				You should specify the URI you wish to open on the command line.<br/>
+				<code><pre>
+Usage: ./ninjarize [OPTION...] [URI]
+Renders a URI using webkit on the desktop (allowing transparency)
+
+  -w,--width=WIDTH                Set the window width.
+  -h,--height=HEIGHT              Set the window height.
+  -x                              Set the window's X coordinate.
+  -y                              Set the window's Y coordinate.
+  -b, --borders                   Enable window decoration.
+  -s, --sticky                    Make window appear on all desktops.
+  -d, --desktop                   Pin window to the desktop.
+  -c, --center                    Center the window (overrides -x and -y).
+  -n, --noinput                   Makes window clickthrowable.
+  -f, --fullscreen                Fullscreens the window.
+  -v, --version                   Print program version.
+
+Notes:
+If you don't specify size, coordinates of center the default is
+to maximize the window.
+'Maximize' mode is differnt from 'fullscreen', maximize doesn't
+draw in the taskbar area like fullscreen does so if content is hidden
+under the top taskbar turn off fullscreen. (there is no arg to force
+maximize, just don't override it.)
+If you don't give any args then Ninjarize will enter a demo mode
+and --desktop, --noinput and --sticky will be turned on and a default
+uri 'file://html/index.xhtml' will be loaded.
+				</pre></code>
 			</section>
-		<!--Draw some embedded SVG circles.-->
-		<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-			style="width:100%; height:300px; top:0; left:0; z-index:-1;">
-			<circle cx="50%" cy="50%" r="90" stroke="white" fill="white" fill-opacity="0.25"/>
-			<circle cx="50%" cy="50%" r="65" stroke="white" fill="white" fill-opacity="0.25"/>
-			<circle cx="50%" cy="50%" r="40" stroke="white" fill="white" fill-opacity="0.25"/>
-			<circle cx="50%" cy="50%" r="15" stroke="white" fill="white" fill-opacity="0.25"/>
-		</svg>
+
+			<!--Draw some embedded SVG circles.-->
+			<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+				style="width:100%; height:300px; top:0; left:0; z-index:-1;">
+				<circle cx="50%" cy="50%" r="90" stroke="white" fill="white" fill-opacity="0.25"/>
+				<circle cx="50%" cy="50%" r="65" stroke="white" fill="white" fill-opacity="0.25"/>
+				<circle cx="50%" cy="50%" r="40" stroke="white" fill="white" fill-opacity="0.25"/>
+				<circle cx="50%" cy="50%" r="15" stroke="white" fill="white" fill-opacity="0.25"/>
+			</svg>
 		</article>
 
 		<aside id="aside" class="tint-white-50">
@@ -153,6 +161,7 @@
 				HDD Temp: 99°c<br/>
 			</section>
 		</aside>
+
 		<footer>
 			Some footer text!
 		</footer>
