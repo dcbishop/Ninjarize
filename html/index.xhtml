@@ -82,12 +82,15 @@
 			.tint-blue-50 { background-color: rgba(0, 0, 128, 0.5); color: black;}
 		</style>
 
-		<script>
+		<script type="text/javascript">
+			<![CDATA[
 			function initilize() {
 				document.body.className="fadeIn";
 				var aside = document.getElementById('aside');
 				aside.className="slideIn";
+				drawPie();
 				clockTick();
+				demoJiggle();
 			}
 
 			function clockTick() {
@@ -98,6 +101,54 @@
 				clock_date.textContent = d.toDateString();
 				setTimeout('clockTick()', 500);
 			}
+
+			function demoJiggle() {
+				pieValueTarget += Math.floor((Math.random()*101)-50);
+				setTimeout('demoJiggle()', 5000);
+				drawPie();
+			}
+
+			var pieValueCurrent = 0;
+			var pieValueTarget = Math.floor((Math.random()*360));
+
+			function drawPie() {
+				var canvas = document.getElementById("ninjarizePie");  
+				if (canvas.getContext) {
+					if(pieValueTarget > 359) {
+						pieValueTarget = 359;
+					} else if(pieValueTarget < 0) {
+						pieValueTarget = 0;
+					} 
+					var ctx = canvas.getContext("2d");
+					ctx.clearRect (0, 0, canvas.width, canvas.height);
+
+					var clockWise = false;
+					var width = 30;
+					var startAngle = 0;
+					var endAngle = pieValueCurrent;
+
+					ctx.beginPath();
+					ctx.arc(canvas.height/2, canvas.height/2, (canvas.height-2)/2, (Math.PI/180)*startAngle, (Math.PI/180)*endAngle, clockWise); // Outer circle
+					ctx.arc(canvas.height/2, canvas.height/2, ((canvas.height-2)/2)-width, (Math.PI/180)*endAngle, (Math.PI/180)*startAngle, !clockWise); // Inner circle
+					ctx.strokeStyle = "white"
+					ctx.fillStyle = "rgba(255, 255, 255, 0.25)";
+					ctx.closePath();
+					ctx.stroke();
+					ctx.fill();
+					
+					ctx.fillStyle = "white"
+					ctx.fillText(pieValueCurrent + "->" + pieValueTarget, 100, 100);
+
+					if(pieValueCurrent < pieValueTarget ) {
+						pieValueCurrent += 1;
+						setTimeout('drawPie()', 50);
+					} else if(pieValueCurrent > pieValueTarget ) { 
+						pieValueCurrent -= 1;
+						setTimeout('drawPie()', 50);
+					}
+				}  
+			}
+			]]>
 		</script>
 	</head>
 
@@ -147,6 +198,8 @@ uri 'file://html/index.xhtml' will be loaded.
 				<circle cx="50%" cy="50%" r="40" stroke="white" fill="white" fill-opacity="0.25"/>
 				<circle cx="50%" cy="50%" r="15" stroke="white" fill="white" fill-opacity="0.25"/>
 			</svg>
+
+			<canvas id="ninjarizePie" width="202" height="202"></canvas>
 		</article>
 
 		<aside id="aside" class="tint-white-50">
